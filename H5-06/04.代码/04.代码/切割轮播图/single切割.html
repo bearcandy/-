@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 300px;
+            width: 560px;
+            height: 380px;
+            display: flex;
+            position: relative;
+        }
+
+        /*两个块*/
+        li{
+            width: 33.33%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 1s;
+        }
+        li>div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        li:nth-of-type(2){
+            transition-delay: 0.1s;
+        }
+        li:nth-of-type(3){
+            transition-delay: 0.2s;
+        }
+        li:nth-of-type(2) div{
+            background-position: -187px 0;
+        }
+        li:nth-of-type(3) div{
+            background-position: -373px  0;
+        }
+        /*给四个面设置不同背景*/
+        .first{
+            background: url("imgs/01.jpg");
+            transform: rotateX(0deg) translateZ(190px);
+        }
+        .second{
+            background: url("imgs/02.jpg");
+            transform: rotateX(-90deg) translateZ(190px);
+        }
+        .third{
+            background: url("imgs/03.jpg");
+            transform: rotateX(-180deg) translateZ(190px);
+        }
+        .fourth{
+            background: url("imgs/04.jpg");
+            transform: rotateX(-270deg) translateZ(190px);
+        }
+        /*点击按钮*/
+        a{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background: skyblue;
+            font-size: 40px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            border: 1px solid gray;
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+        }
+
+        a:nth-of-type(1){
+            left: 0;
+            transform:translateY(-25px) translateX(-50px);
+        }
+        a:nth-of-type(2){
+            right: 0;
+            transform:translateY(-25px) translateX(50px);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <!--第一个块-->
+        <li>
+            <!--第一、二、三、四个面-->
+            <div class="first"></div>
+            <div class="second"></div>
+            <div class="third"></div>
+            <div class="fourth"></div>
+        </li>
+        <!--第二个块-->
+        <li>
+            <div class="first"></div>
+            <div class="second"></div>
+            <div class="third"></div>
+            <div class="fourth"></div>
+        </li>
+        <!--第三个块-->
+        <li>
+            <div class="first"></div>
+            <div class="second"></div>
+            <div class="third"></div>
+            <div class="fourth"></div>
+        </li>
+        <a href="javascript:void(0)" class='left'>&lt;</a>
+        <a href="javascript:void(0)" class='right'>&gt;</a>
+    </ul>
+</div>
+<script>
+    var clickCount=0;
+    $(function () {
+        $('.right').click(function () {
+            clickCount++;
+            $('li').css({
+                transform: 'rotateX(' + clickCount * 90 + 'deg)'
+            })
+        })
+        $('.left').click(function () {
+            clickCount--;
+            $('li').css({
+                transform: 'rotateX(' + clickCount * 90 + 'deg)'
+            })
+        })
+    })
+</script>
+</body>
+</html>
