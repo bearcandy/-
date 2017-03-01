@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 1000px;
+            perspective: 1000px;
+        }
+        .pic {
+            opacity: 0.7;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform: translateZ(-1000px);
+            animation: haha 1s infinite both ;
+        }
+        @keyframes haha {
+            from {
+
+            }
+            to {
+                opacity: 1;
+                transform: translateZ(1000px);
+            }
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByClassName("box")
+                box= box[0];
+            var timer = setInterval(function(){
+                var tu = document.createElement("img");
+                tu.src = "img/hj.PNG";
+                tu.className="pic";
+                var num = document.getElementsByTagName("img");
+                if(num.length>300) {
+                    clearInterval(timer);
+                }
+                tu.style.left= Math.floor(Math.random()*1000)+"px";
+                tu.style.top= Math.floor(Math.random()*1000)+"px";
+                box.appendChild(tu);
+            },50)
+                var step = 0;
+            var timer2 = setInterval(function() {
+                step = step - 0.1
+                var imgs = document.getElementsByTagName("img")
+                for(var i = 0;i<imgs.length;i++) {
+                    imgs[i].style.animationDuration=(1+step)+"s"
+                }
+                console.log(imgs[0].style.animationDuration)
+            },3000)
+        }
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
