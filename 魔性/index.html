@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 1000px;
+            perspective: 500px;
+        }
+        .pic {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            transform: translateZ(-10000px);
+            animation: haha 2s 1s infinite both ;
+        }
+        @keyframes haha {
+            from {
+
+            }
+            to {
+                transform: translateZ(1000px);
+            }
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.getElementsByClassName("box")
+                box= box[0]
+
+
+            var timer = setInterval(function(){
+                var tu = document.createElement("img");
+                tu.src = "img/hj.PNG";
+                tu.className="pic";
+                tu.style.left= Math.floor(Math.random()*1000)+"px";
+                tu.style.top= Math.floor(Math.random()*1000)+"px";
+                box.appendChild(tu);
+            },1)
+
+        }
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
